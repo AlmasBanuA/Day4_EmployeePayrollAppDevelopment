@@ -1,5 +1,6 @@
 package com.bridgelabz.employeepayroll.service;
 
+import com.bridgelabz.employeepayroll.dto.EmployeeDTO;
 import com.bridgelabz.employeepayroll.model.Employee;
 import com.bridgelabz.employeepayroll.repository.EmployeePayrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,8 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return "Welcome To Employee Program " + name;
     }
 
-    public Employee postMessage(Employee employee) {
-        Employee newemployee =new Employee(employee);
-        return repository.save(newemployee);
+    public String postMessage(EmployeeDTO employee) {
+        return "Hello Employee " + employee.getFirstName() + "" + employee.getLastName() + "!";
     }
 
     public String putMessage(String name) {
@@ -31,9 +31,10 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     }
 
     @Override
-    public Employee postDataToRepo(Employee employee) {
-        repository.save(employee);
-        return employee;
+    public Employee postDataToRepo(EmployeeDTO employee) {
+        Employee newEmployee = new Employee(employee);
+        repository.save(newEmployee);
+        return newEmployee;
     }
 
     @Override
@@ -48,17 +49,16 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return newEmployee;
     }
 
-    public Employee updateDataById(Integer id, Employee employee) {
-        Employee newEmployee = new Employee(id, employee.getFirstName(), employee.getLastName(), employee.getProfilePic(), employee.getDepartment(), employee.getSalary(), employee.getDate(), employee.getNotes());
+    public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
+        Employee newEmployee = new Employee(id, employeeDTO);
         repository.save(newEmployee);
         return newEmployee;
     }
 
     public String deleteDataById(Integer id) {
         repository.deleteById(id);
-        return "Employee with ID:" + id + " got deleted";
+        return "Employee with unique ID:" + id + " got deleted";
     }
 
 
 }
-
