@@ -1,5 +1,6 @@
 package com.bridgelabz.employeepayroll.service;
 
+import com.bridgelabz.employeepayroll.dto.EmployeeDTO;
 import com.bridgelabz.employeepayroll.model.Employee;
 import com.bridgelabz.employeepayroll.repository.EmployeePayrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,54 +12,43 @@ import java.util.Optional;
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
     @Autowired
-    EmployeePayrollRepository repository;
+    EmployeePayrollRepository repo;
 
     public String getMessage(String name) {
-        return "Welcome To Employee Program " + name;
+        return "Welcome "+name;
     }
-
-    public Employee postMessage(Employee employee) {
-        Employee newemployee =new Employee(employee);
-        return repository.save(newemployee);
+    public String postMessage(Employee employee) {
+        return "Hello "+employee.getFirstName()+""+employee.getLastName()+"!";
     }
-
     public String putMessage(String name) {
-        return "Hey Dude , " + name;
+        return "How are you, "+name;
     }
-
     public String getWelcome() {
-        return "Welcome to Employee Payroll App.....!";
+        return "Welcome to Employee Payroll !!!";
     }
-
-    @Override
     public Employee postDataToRepo(Employee employee) {
-        repository.save(employee);
-        return employee;
+        Employee newEmployee = new Employee(employee);
+        repo.save(newEmployee);
+        return newEmployee;
     }
-
-    @Override
-    public List<Employee> getAllData() {
-        List<Employee> list = repository.findAll();
+    public List<Employee> getAllData(){
+        List<Employee> list=repo.findAll();
         return list;
     }
-
-    @Override
-    public Optional<Employee> getDataById(Integer id) {
-        Optional<Employee> newEmployee = repository.findById(id);
+    public Employee getDataById(Integer id) {
+        Optional<Employee> newEmployee = repo.findById(id);
+        if(newEmployee.isPresent())
+            return newEmployee.get();
+        else
+            return null;
+    }
+    public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
+        Employee newEmployee = new Employee(id,employeeDTO);
+        repo.save(newEmployee);
         return newEmployee;
     }
-
-    public Employee updateDataById(Integer id, Employee employee) {
-        Employee newEmployee = new Employee(id, employee.getFirstName(), employee.getLastName(), employee.getProfilePic(), employee.getDepartment(), employee.getSalary(), employee.getDate(), employee.getNotes());
-        repository.save(newEmployee);
-        return newEmployee;
-    }
-
     public String deleteDataById(Integer id) {
-        repository.deleteById(id);
-        return "Employee with ID:" + id + " got deleted";
+        repo.deleteById(id);
+        return "Employee with ID:"+id+" got deleted";
     }
-
-
 }
-
