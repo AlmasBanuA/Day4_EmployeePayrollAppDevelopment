@@ -12,21 +12,25 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/employeepayrollservice")
 public class EmployeePayrollController {
     @Autowired
     IEmployeePayrollService service;
 
     @GetMapping("/getMessage")
     public ResponseEntity<String> getMessage(@RequestParam String name){
-        return new ResponseEntity<String>(service.getMessage(name),HttpStatus.OK);
+        String message = service.getMessage(name);
+        return new ResponseEntity<String>(message,HttpStatus.OK);
     }
     @PostMapping("/postMessage")
-    public ResponseEntity<String> postMessage(@RequestBody Employee employee){
-        return new ResponseEntity<String>(service.postMessage(employee),HttpStatus.OK);
+    public ResponseEntity<String> postMessage(@RequestBody EmployeeDTO employeeDTO){
+        String message = service.postMessage(employeeDTO);
+        return new ResponseEntity<String>(message,HttpStatus.OK);
     }
     @PutMapping("/putMessage/{name}")
     public ResponseEntity<String> putMessage(@PathVariable String name){
-        return new ResponseEntity<String>(service.putMessage(name),HttpStatus.OK);
+        String message = service.putMessage(name);
+        return new ResponseEntity<String>(message,HttpStatus.OK);
     }
     //ability to display welcome message
     @GetMapping("/employeepayrollservice")

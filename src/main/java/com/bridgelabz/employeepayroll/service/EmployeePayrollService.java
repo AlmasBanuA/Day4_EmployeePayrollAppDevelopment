@@ -10,15 +10,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeePayrollService implements IEmployeePayrollService {
+public class EmployeePayrollService implements IEmployeePayrollService{
     @Autowired
     EmployeePayrollRepository repo;
 
     public String getMessage(String name) {
         return "Welcome "+name;
     }
-    public String postMessage(Employee employee) {
-        return "Hello "+employee.getFirstName()+""+employee.getLastName()+"!";
+    public String postMessage(EmployeeDTO employeeDTO) {
+        return "Hello "+employeeDTO.getFirstName()+""+employeeDTO.getLastName()+"!";
     }
     public String putMessage(String name) {
         return "How are you, "+name;
@@ -42,13 +42,13 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         else
             return null;
     }
-    public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
+    public Employee updateDataById(Integer id,EmployeeDTO employeeDTO) {
         Employee newEmployee = new Employee(id,employeeDTO);
         repo.save(newEmployee);
         return newEmployee;
     }
     public String deleteDataById(Integer id) {
         repo.deleteById(id);
-        return "Employee with ID:"+id+" got deleted";
+        return null;
     }
 }

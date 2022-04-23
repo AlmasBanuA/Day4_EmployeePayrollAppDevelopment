@@ -83,5 +83,3 @@ public class EmployeeDTO {
         this.notes = notes;
     }
 }
-
-
