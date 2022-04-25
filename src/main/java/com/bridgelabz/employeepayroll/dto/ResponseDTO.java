@@ -1,32 +1,16 @@
 package com.bridgelabz.employeepayroll.dto;
 
-import org.springframework.stereotype.Service;
+import lombok.Data;
 
-
+@Data
 public class ResponseDTO {
-    private String messsage;
-    private Object data;
 
-    public ResponseDTO(String messsage, Object data) {
-        super();
-        this.messsage = messsage;
-        this.data = data;
-    }
+        private String message;
+        private Object data;
 
-    public String getMesssage() {
-        return messsage;
+        public ResponseDTO(String message, Object data) {
+            this.message = message;
+            this.data = data;
+        }
     }
-
-    public void setMesssage(String messsage) {
-        this.messsage = messsage;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
-}
 
