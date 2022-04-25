@@ -1,0 +1,3 @@
+2022-04-25 14:09:31.789  INFO 18312 --- [restartedMain] c.b.e.EmployeepayrollApplication         : Starting EmployeepayrollApplication using Java 18 on DESKTOP-LBIHPHF with PID 18312 (C:\Users\user\Desktop\CFP\Day4_EmployeePayroll\Day4_EmployeePayrollAppDevelopment\target\classes started by user in C:\Users\user\Desktop\CFP\Day4_EmployeePayroll\Day4_EmployeePayrollAppDevelopment)
+2022-04-25 14:09:31.795 DEBUG 18312 --- [restartedMain] c.b.e.EmployeepayrollApplication         : Running with Spring Boot v2.6.3, Spring v5.3.15
+2022-04-25 14:09:31.795  INFO 18312 --- [restartedMain] c.b.e.EmployeepayrollApplication         : No active profile set, falling back to default profiles: default
