@@ -1,20 +1,22 @@
-package com.bridgelabz.employeepayroll.model;
+package com.bridgelabz.employeepayrollservice.model;
 
-import com.bridgelabz.employeepayroll.dto.EmployeeDTO;
+import com.bridgelabz.employeepayrollservice.dto.EmployeeDTO;
 import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
+//Map to a database table by name employee
 @Entity
+//Use to bundle features of getter and setter
 @Data
-//@Getter
-//@Setter
+
+//Created Employee class with different fields
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Integer id;
 
     private String firstName;

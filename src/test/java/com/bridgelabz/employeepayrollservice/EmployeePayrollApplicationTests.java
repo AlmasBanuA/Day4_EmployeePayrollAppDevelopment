@@ -1,10 +1,10 @@
-package com.bridgelabz.employeepayroll;
+package com.bridgelabz.employeepayrollservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeepayrollApplicationTests {
+class EmployeePayrollApplicationTests {
 
 	@Test
 	void contextLoads() {
