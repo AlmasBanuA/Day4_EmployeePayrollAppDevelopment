@@ -13,14 +13,19 @@ import java.util.Optional;
 
 @Service
 
-//Created EmployeePayrollService class to serve api calls done by controller layer
+/**
+* Created EmployeePayrollService class to serve api calls done by controller layer
+ */
 public class EmployeePayrollService implements IEmployeePayrollService {
 
-    //Autowired EmployeePayrollRepository interface to inject its dependency here
+    /**
+    * Autowired EmployeePayrollRepository interface to inject its dependency here
+     */
     @Autowired
     EmployeePayrollRepository repository;
 
     public String getWelcome() {
+
         return "Welcome to Employee Payroll !!!";
     }
 
@@ -61,6 +66,17 @@ public class EmployeePayrollService implements IEmployeePayrollService {
             throw new EmployeePayrollException("Employee Details not found");
         }
       return null;
+    }
+
+    /**
+    * Ability to serve controller class api to retrieve data having particular department
+     */
+    public List<Employee> getDataByDepartment(String department) {
+        List<Employee> newEmp = repository.findByDepartment(department);
+        if (newEmp.isEmpty()) {
+            throw new EmployeePayrollException("Employee Not Found");
+        }
+        return newEmp;
     }
 }
 
