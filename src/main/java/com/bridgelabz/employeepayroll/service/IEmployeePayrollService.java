@@ -6,7 +6,9 @@ import com.bridgelabz.employeepayrollservice.model.Employee;
 
 import java.util.List;
 
-//Created IEmployeePayrollService interface to achieve abstraction
+/**
+* Created IEmployeePayrollService interface to achieve abstraction
+ */
 public interface IEmployeePayrollService {
 
     public String getWelcome();
@@ -20,4 +22,7 @@ public interface IEmployeePayrollService {
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
 
     public String deleteDataById(Integer id);
+
+    public List<Employee> getDataByDepartment(String department);
+
 }
